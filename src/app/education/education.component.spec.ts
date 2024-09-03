@@ -20,9 +20,9 @@ describe('EducationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render "EDUCATION"', () => {
+  it('should render "Education"', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h2')?.textContent).toContain('EDUCATION');
+    expect(compiled.querySelector('h3')?.textContent).toContain('Education');
   });
 
   it('should render the start date and end date for each item', () => {

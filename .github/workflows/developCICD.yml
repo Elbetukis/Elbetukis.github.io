@@ -38,3 +38,12 @@ jobs:
              serving_base ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github. sha}}
       - name: show docker images
         run: docker images
+
+      - name: docker login 
+        env:
+          DOCKER_USER: $1(secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run : |
+          docker login -u $DOCKER_USER -P $DOCKER_PASSWORD
+      - name: Docker Push
+        run: docker push ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github. sha}}

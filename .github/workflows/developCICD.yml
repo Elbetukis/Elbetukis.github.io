@@ -4,15 +4,18 @@ on:
     branches: [ "develop"]
   pull_request:
     branches: [ "develop"]
+    
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: '18.x'
 
       - name: Setup
         run: npm ci
@@ -21,29 +24,33 @@ jobs:
         run: |
           npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
-      - name: build angular, output in dist/mycv
-        run: | 
-          CI=false npm run build
-    
-      - name: show dir 
+      - name: Build Angular, output in dist/mycv
         run: |
-            ls -la dist/mycv/browser
-    
-      - name: download, run httpd image, container name serving_base 
+          CI=false npm run build
+
+      - name: Show directory contents
+        run: |
+          ls -la dist/mycv/browser
+
+      - name: Download and run httpd image, container name serving_base 
         run: |
           docker run -d --name serving_base httpd
-          
+
       - name: Build the custom Docker image
-        run: docker commit --change "ENV MODEL_NAME ${{secrets.MODEL_NAME}}"
-             serving_base ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github. sha}}
-      - name: show docker images
+        run: |
+          docker commit --change "ENV MODEL_NAME ${{ secrets.MODEL_NAME }}" \
+          serving_base ${{ secrets.DOCKER_USER }}/${{ secrets.MODEL_NAME }}:${{ github.sha }}
+
+      - name: Show Docker images
         run: docker images
 
-      - name: docker login 
+      - name: Docker login
         env:
-          DOCKER_USER: $1(secrets.DOCKER_USER}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run : |
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
       - name: Docker Push
-run: docker push ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github. sha}}
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/${{ secrets.MODEL_NAME }}:${{ github.sha }}

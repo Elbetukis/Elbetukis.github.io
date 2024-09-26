@@ -4,7 +4,8 @@ import { HeaderComponent } from './header/header.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { EducationComponent } from './education/education.component';
 import { LanguagesComponent } from './languages/languages.component';
-import { InterestsComponent } from './interests/interests.component'; // Import the Interests component
+import { InterestsComponent } from './interests/interests.component';
+import { AchievementsComponent } from './achievements/achievements.component'; // Import the Interests component
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ import { InterestsComponent } from './interests/interests.component'; // Import 
     WorkExperienceComponent,
     EducationComponent,
     LanguagesComponent,
-    InterestsComponent // Add InterestsComponent to the imports
+    InterestsComponent,
+    AchievementsComponent
+    // Add InterestsComponent to the imports
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

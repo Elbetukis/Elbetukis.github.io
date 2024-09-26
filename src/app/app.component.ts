@@ -13,5 +13,5 @@ import { LanguagesComponent } from './languages/languages.component';  // Cambia
   imports: [RouterOutlet, HeaderComponent, WorkExperienceComponent, EducationComponent, LanguagesComponent]
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'mycv';
 }

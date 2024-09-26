@@ -1,27 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { EducationComponent } from './education/education.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { InterestsComponent } from './interests/interests.component';
-import { AchievementsComponent } from './achievements/achievements.component'; // Import the Interests component
+import { AchievementsComponent } from './achievements/achievements.component';
+import { SkillsComponent } from './skills/skills.component';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
 
 @Component({
   selector: 'app-root',
-  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  standalone: true, // Agrega esta línea para que el componente sea standalone
   imports: [
-    RouterOutlet,
+    CommonModule, // Asegúrate de incluir CommonModule aquí
     HeaderComponent,
     WorkExperienceComponent,
     EducationComponent,
     LanguagesComponent,
     InterestsComponent,
-    AchievementsComponent
-    // Add InterestsComponent to the imports
-  ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    AchievementsComponent,
+    SkillsComponent
+  ]
 })
 export class AppComponent {
   title = 'mycv';

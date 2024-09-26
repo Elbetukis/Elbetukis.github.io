@@ -1,0 +1,11 @@
+<h1>Achievements</h1>
+
+<ul>
+  <li *ngFor="let achievement of achievements">
+    <p><strong>{{ achievement.puesto }} en {{ achievement.empresa }}</strong></p>
+    <p>{{ achievement.fecha }} - {{ achievement.ubicacion }}</p>
+    <ul>
+      <li *ngFor="let logro of achievement.logros">{{ logro }}</li>
+    </ul>
+  </li>
+</ul>

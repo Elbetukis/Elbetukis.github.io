@@ -3,14 +3,22 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { EducationComponent } from './education/education.component';
-import { LanguagesComponent } from './languages/languages.component';  // Cambia 'languajes' a 'languages'
- // Asegúrate de que esta ruta sea correcta
+import { LanguagesComponent } from './languages/languages.component';
+import { InterestsComponent } from './interests/interests.component'; // Import the Interests component
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, WorkExperienceComponent, EducationComponent, LanguagesComponent]
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    WorkExperienceComponent,
+    EducationComponent,
+    LanguagesComponent,
+    InterestsComponent // Add InterestsComponent to the imports
+  ],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'mycv';

@@ -39,7 +39,7 @@ jobs:
       - name: Build the custom Docker image
         run: |
           docker commit --change "ENV MODEL_NAME ${{ secrets.MODEL_NAME }}" \
-          serving_base ${{ secrets.DOCKER_USER }}/${{ secrets.MODEL_NAME }}:${{ github.sha }}
+          3bc1a9c97172 ${{ secrets.DOCKER_USER }}/${{ secrets.MODEL_NAME }}:${{ github.sha }}
 
       - name: Show Docker images
         run: docker images

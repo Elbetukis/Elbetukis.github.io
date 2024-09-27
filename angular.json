@@ -92,10 +92,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7cfd6d91-b676-4fc9-a145-687a0b260d6e"
   }
 }
